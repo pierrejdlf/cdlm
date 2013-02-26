@@ -1,0 +1,123 @@
+body, html {
+	margin:0; padding:0;
+	width:100%;
+	height:100%;	
+}
+#map { position:absolute; top:0; bottom:0; width:100%; }
+.d3-vec { position:absolute; }
+.d3-vec {
+	/*fill:red;*/
+	/*opacity:0.3;*/
+}
+
+#panel {
+	position:absolute;
+	left:0;
+	top:0;
+	height:100%;
+	background:rgba(250,250,250,1);
+}
+#typename {
+	position:absolute;
+	left:0px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	color:white;
+	background: rgba(10,10,10,0.8);
+}
+#stationname {
+	/*width:300px;
+	height:100px;*/
+	position:absolute;
+	left:0px;
+	/*font-family: 'Merienda', cursive;*/
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	color:white;
+	background: rgba(10,10,10,0.8);
+	/*background:rgba(250,250,250,0.9);*/
+}
+#stationgrams {
+	position:absolute;
+	left:0px;
+	top:130px;
+}
+.ngrams {
+	padding:0px 6px 0px 6px;
+	color:gray;
+	display:inline-block;
+	/*-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: gray;
+	border:1px solid lightgray;*/
+	margin:0px;
+	font-family: 'Text Me One', sans-serif;
+}
+
+/* CONTROLS */
+#overCarresImage {
+	position: absolute;
+	pointer-events: none;
+}
+
+.carres_back {
+	fill: white;
+}
+.carres_circle {
+	fill: white;
+	stroke-width:3;
+	stroke:black;
+}
+.carres_circle:hover {
+	stroke: red;
+}
+.carres_clic {
+	opacity:0.6;
+}
+.carres_clic:hover {
+	opacity:1;
+}
+.clic.current {
+	opacity:1;
+}
+.carres_value {
+	opacity:0.8;
+}
+
+
+
+/* THE D3 SVG STUFF */
+.stations {
+	fill:black;
+}
+
+.voropaths {
+	/*fill: #000;*/
+	fill-opacity: .5;
+	stroke: lightgray;
+	stroke-opacity:0.2;
+	stroke-width: 1px;
+}
+
+.voropaths:hover {
+	/*fill: white;
+	fill-opacity: .7;*/
+	stroke-opacity:1;
+	stroke:yellow;
+	stroke-width: 2px;
+}
+
+/* GRAPH */
+#mygraph {
+	width:100%;
+	height:100%;
+	background:black;
+}
+.buttons-container {
+	position:absolute;
+	left:10px;
+	top:10px;
+	z-index:99999;
+}
+

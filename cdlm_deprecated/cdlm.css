@@ -1,0 +1,44 @@
+.cdlm_text {
+	display:inline-block;
+	font-size:90%;
+}
+.cdlm_button {
+	padding:2px;
+	margin-left:4px;
+	margin-right:2px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	cursor:pointer;
+	font-size:90%;
+	background:white;
+	border:1px solid lightgray;
+}
+.cdlm_button:hover {
+	background:lightgray;
+}
+.cdlm_legend {
+	position:absolute;
+	left:7px;
+	padding:2px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background:yellow;
+	font-size:90%;
+}
+.cdlm_white {
+	width:180px;
+	text-align:right;
+	background:white;
+}
+.cdlm_pFask:hover {
+	background:#94BDE1;
+}
+.cdlm_pHask:hover {
+	background:#F0ACC7;
+}
+.cdlm_pLesbian:hover {
+	background:#F9B6FF;
+}
+.cdlm_pHomo:hover {
+	background:#EAA99F;
+}
