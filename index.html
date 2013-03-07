@@ -25,12 +25,12 @@
 	<!--<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />-->
 </head>
 <body>
-
+<! ------------------------------------------------------------ -->
 <div id="cdlm_graph"></div>
 <div id="cdlm_map"></div>
-
-<div id="topbar">
-	<a class="help btn" href="#helpModal" data-toggle="modal"><img src="img/help.png"/></a>
+<! ------------------------------------------------------------ -->
+<div id="topbar" title="change le type d'exporation" data-placement="right">
+	<a id="help" href="#helpModal" data-toggle="modal" title="j'y comprends rien" data-placement="bottom"><img class="img-rounded" src="img/help_white.png"/></a>
 	<div id="topbar_modes">
 		<div class="btn-group" data-toggle="buttons-radio">
 			<div class="btn btn-large btn-inverse active" class-toggle="btn-inverse" id="m_map">Carte</div>
@@ -38,7 +38,7 @@
 		</div>
 	</div>
 </div>
-
+<! ------------------------------------------------------------ -->
 <div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<h1>dis moi où tu me plaîs</h1>
@@ -46,16 +46,21 @@
 	</div>
 	<div class="modal-body">
 		<img src="img/carte.png"/>
-		<p>La Carte permet d'afficher, par sexe, le nombre d'annonces pour chaque station de métro. Les mots les plus fréquents (quelque soit le sexe) sont affichés sur la partie gauche</p>
+		<p><b>La Carte</b> permet d'afficher, par sexe, le <b>nombre d'annonces</b> pour chaque station de métro. Les mots les plus fréquents (quel que soit le sexe) sont affichés sur la partie gauche.<br>La sélection d'une station permet d'afficher un exemple d'annonce, ainsi que les mots présents dans l'ensemble du corpus pour la combinaison de sexes choisie.<br>Cliquez sur un mot pour afficher sa répartition géographique (indépendemment du sexe)<br>Cliquez sur le logo du Métro pour modifier l'affichage des stations.</p>
 		<img src="img/graphe.png"/>
-		<p>Le Graphe permet de visualiser les différences de vocabulaire selon les sexes.<br>La distance d'un mot aux 4 types (bulles grises <i>Homme>Femme, Homme>Homme, etc...</i>) reflète sa présence relative dans l'ensemble des annonces correspondantes. Sélectionner un mot permet de n'afficher que sa catégorie (vêtement, partie du corps, couleurs, etc...)</p>
+		<p><b>Le Graphe</b> permet de visualiser les <b>différences de vocabulaire</b> selon les sexes.<br>La distance d'un mot aux 4 bulles grises (<i>Homme>Femme, Homme>Homme, ...</i>) reflète sa présence relative dans l'ensemble des annonces.<br>La taille des bulles correspond à la fréquence d'apparition dans le corpus.<br>Il est possible d'afficher ou de masquer certaines catégories (listées à gauche).</p>
 	</div>
 	<div class="modal-footer">
-		<p><a href="http://jdlf.info/p" target="_blank">pierre.jdlf</a> a mis tout ça sur <a href="http://github.com/pierrejdlf/cdlm" target="_blank">Github</a> avec des explications qui expliquent</p>
+		<p><a href="http://jdlf.info/p" target="_blank">Pierre JdlF</a> a mis tout ça sur <a href="http://github.com/pierrejdlf/cdlm" target="_blank">Github</a> avec des explications irrationnelles</p>
 	</div>
 </div>
-<div id="panel">
-	<div id="panel_bys" title="applique sur la carte une échelle de couleurs selon le nombre d'annonces" data-placement="right">
+<! ------------------------------------------------------------ -->
+<div id="panel_graph">
+	<ul class="nav nav-pills nav-stacked" title="afficher ou masquer une catégorie de mots" data-placement="bottom"></ul>
+</div>
+<! ------------------------------------------------------------ -->
+<div id="panel_map">
+	<div id="panel_bys" title="applique sur la carte le nombre d'annonces pour la combinaison de sexes selectionnée" data-placement="right">
 		<div class="btn-group fromto" data-toggle="buttons-radio" title="sexe du rédacteur" data-placement="bottom">
 			<div id="fH" class="bys btn btn-mini active btn-success" class-toggle="btn-success"><img src="img/homme.png"/></div>
 			<div id="fF" class="bys btn btn-mini" class-toggle="btn-warning"><img src="img/femme.png"/></div>
@@ -65,40 +70,34 @@
 			<div id="tF" class="bys btn btn-mini active btn-warning" class-toggle="btn-warning"><img src="img/femme.png"/></div>
 		</div>
 	</div>
-	<!--           
-	<div id="panel_byall">
-		<div id="AL_but">ALL</div>
-	</div>
-	<div id="panel_bysex">
-		<div id="homo">
-			<div class="left"><div class="val" id="FF_val"></div><div class="but" id="FF_but" title="ff" data-placement="top">FF</div></div><div class="right"><div class="but" id="HH_but" title="hh" data-placement="top">HH</div><div class="val" id="HH_val"></div></div>
-		</div>
-		<div id="hetero">
-			<div class="left"><div class="val" id="FH_val"></div><div class="but" id="FH_but" title="fh" data-placement="bottom">FH</div></div><div class="right"><div class="but" id="HF_but" title="hf" data-placement="bottom">HF</div><div class="val" id="HF_val"></div></div>
-		</div>
-	</div>
-	-->
-	<div id="panel_stationname"><img src="img/metro.png" title="modifier l'affichage des stations. les couleurs correspondent aux lignes, la taille à la fréquentation annuelle." data-placement="right"/><div>Sélectionner une station</div></div>
+	<div id="panel_stationname"><img src="img/metro.png" title="modifie l'affichage des stations. les couleurs correspondent aux lignes, la taille à la fréquentation annuelle." data-placement="bottom"/><div>Sélectionner une station</div></div>
 	<div id="panel_words" title="indique sur la carte la présence du mot dans les annonces" data-placement="right"></div>
 </div>
-
+<! ------------------------------------------------------------ -->
 <script type="text/javascript">
 	d3.select("#cdlm_graph").style("opacity",0);
+	d3.select("#panel_graph").style("opacity",0);
 	
 	$(document).ready(function(){
 		init_map("cdlm_map");
 		init_graph("cdlm_graph");
 		
+		// adjust height of left panels
+		var hh = $('body').height() - $('#topbar').height() ;
+		$('#panel_map').css("height",hh+'px');
+		$('#panel_graph').css("height",hh+'px');
+		
 		$("#topbar_modes #m_graph").on("click", function(u) {
 			d3.select("#cdlm_map").transition().style("opacity",0).style("pointer-events","none");
-			d3.select("#panel").transition().style("opacity",0).style("pointer-events","none");
+			d3.select("#panel_map").transition().style("opacity",0).style("pointer-events","none");
 			d3.select("#cdlm_graph").transition().style("opacity",1);
-			
+			d3.select("#panel_graph").transition().style("opacity",1);			
 		});
 		$("#topbar_modes #m_map").on("click", function(u) {
 			d3.select("#cdlm_graph").transition().style("opacity",0);
+			d3.select("#panel_graph").transition().style("opacity",0);
 			d3.select("#cdlm_map").transition().style("opacity",1).style("pointer-events","");
-			d3.select("#panel").transition().style("opacity",1).style("pointer-events","");
+			d3.select("#panel_map").transition().style("opacity",1).style("pointer-events","");
 		});
 
 		$('.btn-group > .btn, .btn[data-toggle="button"]').click(function() {

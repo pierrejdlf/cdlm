@@ -1,5 +1,6 @@
 body, html {
-	margin:0; padding:0;
+	margin:0;
+	padding:0;
 	width:100%;
 	height:100%;
 	background:black;
@@ -12,36 +13,76 @@ body, html {
 	background:#3A3A3A;
 	left:0px;
 	top:0px;
-	width:100%;
+	/*width:100%;*/
 	height:55px;
 	border-bottom:1px solid black;
 }
-#topbar .help {
-	float:right;
-	margin:12px;
-	padding:4px;
-	padding-bottom:1px;
+#topbar #help {
+	position:absolute;
+	margin:14px;
+	margin-top:19px;
 }
-#topbar .btn.help img {
-	width:20px;
-	height:20px;
+#topbar #help img {
+	width:15px;
+	height:15px;
 }
-#topbar_modes {
+#topbar #help img:hover {
+	opacity:0.3;
+}
+#topbar #topbar_modes {
 	width:280px;
 	text-align:center;
 	padding:10px;
 }
-#topbar_modes .btn-group {
-	
+
+
+/* ------------------------------------------------------------------------ */
+/* LEFT PANELs */
+#panel_map, #panel_graph {
+	position:absolute;
+	left:0;
+	top:0;
+	border-top:1px solid black;
+	width:300px;
+	height:90%;
+	background:gray;
+	background:rgba(250,250,250,1);
+	margin-top:55px;
+}
+
+/* ? */
+#typename {
+	position:absolute;
+	left:0px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	color:white;
+	background: rgba(10,10,10,0.8);
 }
 
 /* ------------------------------------------------------------------------ */
-/* LEFT PANEL */
-#panel {
-	border-top:1px solid black;
-	width:300px;
-	background:gray;
-	margin-top:55px;
+/* LEFT PANEL GRAPH CATEGORIES */
+#panel_graph ul {
+	margin:10px;
+	margin-right:110px;
+	padding-bottom:30px;
+	cursor: pointer;
+}
+#panel_graph a {
+	margin:0px;
+	padding:3px;
+}
+#panel_graph .catcol {
+	width:16px;
+	height:16px;
+	margin-right:8px;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	display:inline-block;
+}
+#panel_graph span {
+	vertical-align:super;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -62,7 +103,7 @@ body, html {
 .btn.bys img {
 	width:15px;
 	height:15px;
-	top:5px;
+	margin-top:3px;
 }
 .btn-group {
 	display:inline-block;
@@ -174,7 +215,15 @@ body, html {
 .modal-header h1 {
 	font-size: 3.8em;
 	color:white;
+	margin:15px;
+}
+.modal-body img {
+	width:100px;
+	margin-left:7px;
+}
+.modal-body p {
 	margin:7px;
+	font-size: 0.9em;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -237,22 +286,6 @@ body, html {
 .word.vet {background:gray;}
 */
 
-#panel {
-	position:absolute;
-	left:0;
-	top:0;
-	height:100%;
-	background:rgba(250,250,250,1);
-}
-#typename {
-	position:absolute;
-	left:0px;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	font-size: 1em;
-	color:white;
-	background: rgba(10,10,10,0.8);
-}
 
 
 
