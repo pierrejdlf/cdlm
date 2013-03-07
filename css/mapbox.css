@@ -126,7 +126,7 @@
   left:0!important;
   right:0!important;
   bottom:0!important;
-  z-index:99999999999;
+  z-index:999999;
   }
   .map-fullscreen-map .map-fullscreen {
     background-position:-120px 0;

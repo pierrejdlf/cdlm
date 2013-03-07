@@ -1,55 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>outumeplais by pierrejdlf</title>
+<head>
+	<meta charset="UTF-8" />
+	<title>dis moi où tu me plaîs</title>
+	
+	<script src="lib/jquery.js"></script>
+	<script src="lib/d3.v2.min.js"></script>
+	<script src="lib/mapbox.js"></script>
+	
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/bootstrap-tooltip.js"></script>
+	
+	<script src="lib/sigma.min.js"></script>
+	<script src="lib/sigma.parseGexf.js"></script>
+	<script src="lib/sigma.forceatlas2.js"></script>
+	
+	<script src="lib/cdlm.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Clicker+Script|Oleo+Script+Swash+Caps|Cantora+One|Text+Me+One|Merienda|Roboto' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/mapbox.css" type="text/css" />
+	<link rel="stylesheet" href="css/cdlm.css" type="text/css" />
+	
+	<!--<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />-->
+</head>
+<body>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>outumeplais, toi</h1>
-        <p>voronoi interactive map of Paris + graph</p>
+<div id="cdlm_graph"></div>
+<div id="cdlm_map"></div>
 
-        <p class="view"><a href="https://github.com/pierrejdlf/cdlm">View the Project on GitHub <small>pierrejdlf/cdlm</small></a></p>
+<div id="topbar">
+	<a class="help btn" href="#helpModal" data-toggle="modal"><img src="img/help.png"/></a>
+	<div id="topbar_modes">
+		<div class="btn-group" data-toggle="buttons-radio">
+			<div class="btn btn-large btn-inverse active" class-toggle="btn-inverse" id="m_map">Carte</div>
+			<div class="btn btn-large" class-toggle="btn-inverse" id="m_graph">Graphe</div>
+		</div>
+	</div>
+</div>
 
+<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<h1>dis moi où tu me plaîs</h1>
+		<p>exploration des annonces du site <a href="http://croisedanslemetro.com" target="_blank">croisedanslemetro.com</a></p>
+	</div>
+	<div class="modal-body">
+		<img src="img/carte.png"/>
+		<p>La Carte permet d'afficher, par sexe, le nombre d'annonces pour chaque station de métro. Les mots les plus fréquents (quelque soit le sexe) sont affichés sur la partie gauche</p>
+		<img src="img/graphe.png"/>
+		<p>Le Graphe permet de visualiser les différences de vocabulaire selon les sexes.<br>La distance d'un mot aux 4 types (bulles grises <i>Homme>Femme, Homme>Homme, etc...</i>) reflète sa présence relative dans l'ensemble des annonces correspondantes. Sélectionner un mot permet de n'afficher que sa catégorie (vêtement, partie du corps, couleurs, etc...)</p>
+	</div>
+	<div class="modal-footer">
+		<p><a href="http://jdlf.info/p" target="_blank">pierre.jdlf</a> a mis tout ça sur <a href="http://github.com/pierrejdlf/cdlm" target="_blank">Github</a> avec des explications qui expliquent</p>
+	</div>
+</div>
+<div id="panel">
+	<div id="panel_bys" title="applique sur la carte une échelle de couleurs selon le nombre d'annonces" data-placement="right">
+		<div class="btn-group fromto" data-toggle="buttons-radio" title="sexe du rédacteur" data-placement="bottom">
+			<div id="fH" class="bys btn btn-mini active btn-success" class-toggle="btn-success"><img src="img/homme.png"/></div>
+			<div id="fF" class="bys btn btn-mini" class-toggle="btn-warning"><img src="img/femme.png"/></div>
+		</div>
+		<div id="panel_fromto"> recherche </div><div class="btn-group fromto" data-toggle="buttons-radio" title="sexe du destinataire" data-placement="bottom">
+			<div id="tH" class="bys btn btn-mini" class-toggle="btn-success"><img src="img/homme.png"/></div>
+			<div id="tF" class="bys btn btn-mini active btn-warning" class-toggle="btn-warning"><img src="img/femme.png"/></div>
+		</div>
+	</div>
+	<!--           
+	<div id="panel_byall">
+		<div id="AL_but">ALL</div>
+	</div>
+	<div id="panel_bysex">
+		<div id="homo">
+			<div class="left"><div class="val" id="FF_val"></div><div class="but" id="FF_but" title="ff" data-placement="top">FF</div></div><div class="right"><div class="but" id="HH_but" title="hh" data-placement="top">HH</div><div class="val" id="HH_val"></div></div>
+		</div>
+		<div id="hetero">
+			<div class="left"><div class="val" id="FH_val"></div><div class="but" id="FH_but" title="fh" data-placement="bottom">FH</div></div><div class="right"><div class="but" id="HF_but" title="hf" data-placement="bottom">HF</div><div class="val" id="HF_val"></div></div>
+		</div>
+	</div>
+	-->
+	<div id="panel_stationname"><img src="img/metro.png" title="modifier l'affichage des stations. les couleurs correspondent aux lignes, la taille à la fréquentation annuelle." data-placement="right"/><div>Sélectionner une station</div></div>
+	<div id="panel_words" title="indique sur la carte la présence du mot dans les annonces" data-placement="right"></div>
+</div>
 
-        <ul>
-          <li><a href="https://github.com/pierrejdlf/cdlm/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/pierrejdlf/cdlm/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/pierrejdlf/cdlm">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>où me plais-tu ?</h3>
+<script type="text/javascript">
+	d3.select("#cdlm_graph").style("opacity",0);
+	
+	$(document).ready(function(){
+		init_map("cdlm_map");
+		init_graph("cdlm_graph");
+		
+		$("#topbar_modes #m_graph").on("click", function(u) {
+			d3.select("#cdlm_map").transition().style("opacity",0).style("pointer-events","none");
+			d3.select("#panel").transition().style("opacity",0).style("pointer-events","none");
+			d3.select("#cdlm_graph").transition().style("opacity",1);
+			
+		});
+		$("#topbar_modes #m_map").on("click", function(u) {
+			d3.select("#cdlm_graph").transition().style("opacity",0);
+			d3.select("#cdlm_map").transition().style("opacity",1).style("pointer-events","");
+			d3.select("#panel").transition().style("opacity",1).style("pointer-events","");
+		});
 
-<h3>merci toi</h3>
+		$('.btn-group > .btn, .btn[data-toggle="button"]').click(function() {
+			if ($(this).attr('class-toggle') != undefined && !$(this).hasClass('disabled')) {
+				var btnGroup = $(this).parent('.btn-group');
+				if (btnGroup.attr('data-toggle') == 'buttons-radio') {
+					btnGroup.find('.btn').each(function() {
+						$(this).removeClass($(this).attr('class-toggle'));
+					});
+					$(this).addClass($(this).attr('class-toggle'));
+				}
+				if (btnGroup.attr('data-toggle') == 'buttons-checkbox' || $(this).attr('data-toggle') == 'button') {
+					if ($(this).hasClass('active')) {
+						$(this).removeClass($(this).attr('class-toggle'));
+					} else {
+						$(this).addClass($(this).attr('class-toggle'));
+					}
+				}
+			}
+		});
 
-<ul>
-<li><a href="http://www.croisedanslemetro.com">http://www.croisedanslemetro.com</a></li>
-<li>scrapy python framework</li>
-<li>Google Refine</li>
-<li>Tropes</li>
-<li>Gephi</li>
-<li>sigma.js</li>
-<li>d3.js</li>
-<li>mapbox</li>
-<li>jquery.js</li>
-</ul>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/pierrejdlf">pierrejdlf</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+	});	
+</script>
+
+</body>
 </html>

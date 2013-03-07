@@ -1,14 +1,241 @@
 body, html {
 	margin:0; padding:0;
 	width:100%;
-	height:100%;	
+	height:100%;
+	background:black;
 }
-#map { position:absolute; top:0; bottom:0; width:100%; }
-.d3-vec { position:absolute; }
-.d3-vec {
-	/*fill:red;*/
-	/*opacity:0.3;*/
+
+/* ------------------------------------------------------------------------ */
+/* TOPBAR */
+#topbar {
+	position:absolute;
+	background:#3A3A3A;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:55px;
+	border-bottom:1px solid black;
 }
+#topbar .help {
+	float:right;
+	margin:12px;
+	padding:4px;
+	padding-bottom:1px;
+}
+#topbar .btn.help img {
+	width:20px;
+	height:20px;
+}
+#topbar_modes {
+	width:280px;
+	text-align:center;
+	padding:10px;
+}
+#topbar_modes .btn-group {
+	
+}
+
+/* ------------------------------------------------------------------------ */
+/* LEFT PANEL */
+#panel {
+	border-top:1px solid black;
+	width:300px;
+	background:gray;
+	margin-top:55px;
+}
+
+/* ------------------------------------------------------------------------ */
+/* PANEL SEX BUTTONS */
+
+#panel_bys {
+	text-align: center;
+	padding:7px;
+}
+#panel_fromto {
+	display:inline-block;
+	font-size: 1.1em;
+	padding:8px;
+	padding-right:10px;
+	font-family: 'Roboto', sans-serif;
+	vertical-align:text-bottom;
+}
+.btn.bys img {
+	width:15px;
+	height:15px;
+	top:5px;
+}
+.btn-group {
+	display:inline-block;
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* PANEL STATION */
+#panel_stationname {
+	padding:10px;
+	padding-left:7px;
+	padding-right:0px;
+	color:white;
+	background: #001A63;
+	font-size: 1.2em;
+	font-family: 'Roboto', sans-serif;
+	border-top:solid black 2px;
+	border-bottom:solid black 2px;
+}
+#panel_stationname img {
+	width:25px;
+	height:25px;
+	margin-right:10px;
+}
+#panel_stationname img:hover {
+	opacity:0.5;
+}
+#panel_stationname div {
+	display:inline-block;
+	vertical-align: super
+}
+
+/* ------------------------------------------------------------------------ */
+/* PANEL WORDS */
+#panel_words {
+	padding-top:10px;
+}
+#panel_words ul {
+	list-style-type: none;
+	margin:0;
+	width:75px;
+	display: inline-block;
+	vertical-align: top;
+}
+#panel_words li {
+	vertical-align: middle;
+	line-height: 8px;
+	color:gray;
+	height:12px;
+	text-align: center;	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	/*border:1px solid lightgray;*/
+	/*font-family: 'Text Me One', sans-serif;*/
+	/*padding:1px;*/
+}
+#panel_words li:hover {
+	/*background:white;*/
+	color:#001A63;
+	cursor: pointer;
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* STATIONS POINTS & VORONOI PATHS */
+.stations {
+	/*stroke-width:1.5px;*/
+}
+
+.voropaths {
+	/*fill: #000;*/
+	/*stroke: lightgray;
+	stroke-opacity:0.2;
+	stroke-width: 1px;*/
+}
+.voropaths:hover {
+	/*fill: white;
+	fill-opacity: .7;*/
+	stroke-opacity:1;
+	stroke:yellow;
+	stroke-width: 2px;
+}
+
+/* ------------------------------------------------------------------------ */
+/* TOOLTIP WITH SAMPLES, overwrite bootstrap css */
+.tooltip {
+	pointer-events: none;
+}
+.tooltip-inner {
+	max-width:400px;
+	padding:9px;
+}
+.tooltip div {
+	color:white;
+	text-align: left;
+	font-size: 1em;
+	font-family: 'Roboto', sans-serif;
+}
+
+/* ------------------------------------------------------------------------ */
+/* MODAL WELCOME & HELP */
+.modal-header {
+	background: #001140;
+	text-align: center;
+	/*font-family: 'Cantora One', sans-serif;*/
+	font-family: 'Clicker Script', cursive;
+	color:white;
+}
+.modal-header h1 {
+	font-size: 3.8em;
+	color:white;
+	margin:7px;
+}
+
+/* ------------------------------------------------------------------------ */
+#cdlm_graph {
+	margin:0; padding:0;
+	width:100%;
+	height:100%;
+}
+
+#cdlm_map {
+	position:absolute;
+	top:0;
+	bottom:0;
+	width:100%;
+}
+
+#cdlm_overmap {
+	position:absolute;
+}
+
+#cdlm_overmap #wordcloud {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:99999999999;
+	pointer-events: none;
+}
+#cdlm_overmap #wordcloud {
+	line-height: 20px;
+}
+#cdlm_overmap #wordcloud .word {
+	margin:0;
+	padding:0;
+	/*padding:0px 2px 0px 2px;*/
+	width:90px;
+	height:10px;
+	color:gray;
+	display:inline-block;
+	/*font-size: 1.3em;*/
+	/*display: inline-block;*/
+	overflow:visible;
+	/*border:gray 1px solid;*/
+	/*-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: gray;
+	border:1px solid lightgray;*/
+	/*font-family: 'Text Me One', sans-serif;*/
+	/*text-shadow: 1px 1px 3px white;*/
+}
+/*
+.word.ac {background:red;}
+.word.bo {background:yellow;}
+.word.col {background:blue;}
+.word.com {background:green;}
+.word.cor {background:gray;}
+.word.em {background:red;}
+.word.loc {background:yellow;}
+.word.sp {background:blue;}
+.word.typ {background:green;}
+.word.vet {background:gray;}
+*/
 
 #panel {
 	position:absolute;
@@ -26,98 +253,11 @@ body, html {
 	color:white;
 	background: rgba(10,10,10,0.8);
 }
-#stationname {
-	/*width:300px;
-	height:100px;*/
-	position:absolute;
-	left:0px;
-	/*font-family: 'Merienda', cursive;*/
-	font-family: 'Roboto', sans-serif;
-	font-size: 1em;
-	color:white;
-	background: rgba(10,10,10,0.8);
-	/*background:rgba(250,250,250,0.9);*/
-}
-#stationgrams {
-	position:absolute;
-	left:0px;
-	top:130px;
-}
-.ngrams {
-	padding:0px 6px 0px 6px;
-	color:gray;
-	display:inline-block;
-	/*-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	background: gray;
-	border:1px solid lightgray;*/
-	margin:0px;
-	font-family: 'Text Me One', sans-serif;
-}
-
-/* CONTROLS */
-#overCarresImage {
-	position: absolute;
-	pointer-events: none;
-}
-
-.carres_back {
-	fill: white;
-}
-.carres_circle {
-	fill: white;
-	stroke-width:3;
-	stroke:black;
-}
-.carres_circle:hover {
-	stroke: red;
-}
-.carres_clic {
-	opacity:0.6;
-}
-.carres_clic:hover {
-	opacity:1;
-}
-.clic.current {
-	opacity:1;
-}
-.carres_value {
-	opacity:0.8;
-}
 
 
 
-/* THE D3 SVG STUFF */
-.stations {
-	fill:black;
-}
 
-.voropaths {
-	/*fill: #000;*/
-	fill-opacity: .5;
-	stroke: lightgray;
-	stroke-opacity:0.2;
-	stroke-width: 1px;
-}
 
-.voropaths:hover {
-	/*fill: white;
-	fill-opacity: .7;*/
-	stroke-opacity:1;
-	stroke:yellow;
-	stroke-width: 2px;
-}
 
-/* GRAPH */
-#mygraph {
-	width:100%;
-	height:100%;
-	background:black;
-}
-.buttons-container {
-	position:absolute;
-	left:10px;
-	top:10px;
-	z-index:99999;
-}
+
 
