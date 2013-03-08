@@ -7,6 +7,22 @@ body, html {
 }
 
 /* ------------------------------------------------------------------------ */
+#cdlm_graph {
+	margin:0; padding:0;
+	width:100%;
+	height:100%;
+}
+#cdlm_overmap {
+	position:absolute;
+}
+#cdlm_map {
+	position:absolute;
+	top:0;
+	bottom:0;
+	width:100%;
+}
+
+/* ------------------------------------------------------------------------ */
 /* TOPBAR */
 #topbar {
 	position:absolute;
@@ -35,7 +51,6 @@ body, html {
 	padding:10px;
 }
 
-
 /* ------------------------------------------------------------------------ */
 /* LEFT PANELs */
 #panel_map, #panel_graph {
@@ -44,21 +59,10 @@ body, html {
 	top:0;
 	border-top:1px solid black;
 	width:300px;
-	height:90%;
+	height:100%;
 	background:gray;
 	background:rgba(250,250,250,1);
 	margin-top:55px;
-}
-
-/* ? */
-#typename {
-	position:absolute;
-	left:0px;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	font-size: 1em;
-	color:white;
-	background: rgba(10,10,10,0.8);
 }
 
 /* ------------------------------------------------------------------------ */
@@ -66,7 +70,7 @@ body, html {
 #panel_graph ul {
 	margin:10px;
 	margin-right:110px;
-	padding-bottom:30px;
+	padding-bottom:40px;
 	cursor: pointer;
 }
 #panel_graph a {
@@ -87,7 +91,21 @@ body, html {
 
 /* ------------------------------------------------------------------------ */
 /* PANEL SEX BUTTONS */
-
+#panel_bys_overlay {
+	position:fixed;
+	left:0;
+	right:0;
+	width:300px;
+	height:50px;
+	background:rgba(0,0,0,0.3);
+	opacity:0;
+	z-index:99999999;
+	pointer-events: none;
+}
+#panel_bys_outter {
+	width:300px;
+	height:50px;
+}
 #panel_bys {
 	text-align: center;
 	padding:7px;
@@ -113,8 +131,8 @@ body, html {
 /* ------------------------------------------------------------------------ */
 /* PANEL STATION */
 #panel_stationname {
-	padding:10px;
-	padding-left:7px;
+	padding:8px;
+	padding-left:10px;
 	padding-right:0px;
 	color:white;
 	background: #001A63;
@@ -133,11 +151,26 @@ body, html {
 }
 #panel_stationname div {
 	display:inline-block;
-	vertical-align: super
+	vertical-align:super;
 }
 
 /* ------------------------------------------------------------------------ */
 /* PANEL WORDS */
+#panel_words_overlay {
+	position:fixed;
+	left:0;
+	right:0;
+	width:300px;
+	height:100%;
+	background:rgba(0,0,0,0.3);
+	opacity:0;
+	z-index:99999999;
+	pointer-events: none;
+}
+#panel_words_outter {
+	width:300px;
+	height:100%;
+}
 #panel_words {
 	padding-top:10px;
 }
@@ -151,14 +184,11 @@ body, html {
 #panel_words li {
 	vertical-align: middle;
 	line-height: 8px;
-	color:gray;
+	color:lightgray;
 	height:12px;
 	text-align: center;	
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	/*border:1px solid lightgray;*/
-	/*font-family: 'Text Me One', sans-serif;*/
-	/*padding:1px;*/
 }
 #panel_words li:hover {
 	/*background:white;*/
@@ -170,20 +200,15 @@ body, html {
 /* ------------------------------------------------------------------------ */
 /* STATIONS POINTS & VORONOI PATHS */
 .stations {
-	/*stroke-width:1.5px;*/
+
 }
 
 .voropaths {
-	/*fill: #000;*/
-	/*stroke: lightgray;
-	stroke-opacity:0.2;
-	stroke-width: 1px;*/
+
 }
 .voropaths:hover {
-	/*fill: white;
-	fill-opacity: .7;*/
 	stroke-opacity:1;
-	stroke:yellow;
+	stroke:#C44040;
 	stroke-width: 2px;
 }
 
@@ -205,6 +230,9 @@ body, html {
 
 /* ------------------------------------------------------------------------ */
 /* MODAL WELCOME & HELP */
+#helpModal {
+	
+}
 .modal-header {
 	background: #001140;
 	text-align: center;
@@ -217,78 +245,15 @@ body, html {
 	color:white;
 	margin:15px;
 }
+.modal-body {
+	padding:0px;
+}
 .modal-body img {
-	width:100px;
-	margin-left:7px;
-}
-.modal-body p {
-	margin:7px;
-	font-size: 0.9em;
-}
-
-/* ------------------------------------------------------------------------ */
-#cdlm_graph {
-	margin:0; padding:0;
-	width:100%;
-	height:100%;
-}
-
-#cdlm_map {
-	position:absolute;
-	top:0;
-	bottom:0;
 	width:100%;
 }
-
-#cdlm_overmap {
-	position:absolute;
+.modal-footer {
+	text-align: center;
 }
-
-#cdlm_overmap #wordcloud {
-	position:absolute;
-	left:0;
-	top:0;
-	z-index:99999999999;
-	pointer-events: none;
-}
-#cdlm_overmap #wordcloud {
-	line-height: 20px;
-}
-#cdlm_overmap #wordcloud .word {
-	margin:0;
-	padding:0;
-	/*padding:0px 2px 0px 2px;*/
-	width:90px;
-	height:10px;
-	color:gray;
-	display:inline-block;
-	/*font-size: 1.3em;*/
-	/*display: inline-block;*/
-	overflow:visible;
-	/*border:gray 1px solid;*/
-	/*-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	background: gray;
-	border:1px solid lightgray;*/
-	/*font-family: 'Text Me One', sans-serif;*/
-	/*text-shadow: 1px 1px 3px white;*/
-}
-/*
-.word.ac {background:red;}
-.word.bo {background:yellow;}
-.word.col {background:blue;}
-.word.com {background:green;}
-.word.cor {background:gray;}
-.word.em {background:red;}
-.word.loc {background:yellow;}
-.word.sp {background:blue;}
-.word.typ {background:green;}
-.word.vet {background:gray;}
-*/
-
-
-
-
 
 
 
