@@ -6,7 +6,7 @@ is an interactive exploratory map of the http://croisedanslemetro.com website
 ### Workflow
 
 * crawl using scrapy
-* cleaning, keeping only subway line
+* cleaning, keeping only subway lines
 * merging with stations coordinates
 * adjusting amount of each station based on annual traffic
 * building 4 corpus based on sex
