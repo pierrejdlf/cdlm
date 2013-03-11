@@ -80,6 +80,12 @@
 	d3.select("#panel_graph").style("opacity",0);
 	
 	$(document).ready(function(){
+	
+		$('#helpModal').modal();
+		$('#helpModal .modal-body img').on("click",function(){
+			$('#helpModal').modal('hide');
+		});
+		
 		init_map("cdlm_map");
 		init_graph("cdlm_graph");
 		
