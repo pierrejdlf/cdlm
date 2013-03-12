@@ -77,7 +77,7 @@
         <attvalues>
           <attvalue for="Weight" value="10000.0"></attvalue>
           <attvalue for="cat" value="personne"></attvalue>
-          <attvalue for="color" value="#242424"></attvalue>
+          <attvalue for="color" value="#7E8080"></attvalue>
           <attvalue for="bulle" value="personne"></attvalue>
           <attvalue for="grammar" value="personne"></attvalue>
         </attvalues>
@@ -89,7 +89,7 @@
         <attvalues>
           <attvalue for="Weight" value="10000.0"></attvalue>
           <attvalue for="cat" value="personne"></attvalue>
-          <attvalue for="color" value="#242424"></attvalue>
+          <attvalue for="color" value="#7E8080"></attvalue>
           <attvalue for="bulle" value="personne"></attvalue>
           <attvalue for="grammar" value="personne"></attvalue>
         </attvalues>
@@ -101,7 +101,7 @@
         <attvalues>
           <attvalue for="Weight" value="10000.0"></attvalue>
           <attvalue for="cat" value="personne"></attvalue>
-          <attvalue for="color" value="#242424"></attvalue>
+          <attvalue for="color" value="#7E8080"></attvalue>
           <attvalue for="bulle" value="personne"></attvalue>
           <attvalue for="grammar" value="personne"></attvalue>
         </attvalues>
@@ -113,7 +113,7 @@
         <attvalues>
           <attvalue for="Weight" value="10000.0"></attvalue>
           <attvalue for="cat" value="personne"></attvalue>
-          <attvalue for="color" value="#242424"></attvalue>
+          <attvalue for="color" value="#7E8080"></attvalue>
           <attvalue for="bulle" value="personne"></attvalue>
           <attvalue for="grammar" value="personne"></attvalue>
         </attvalues>

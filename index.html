@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>dis moi où tu me plaîs</title>
+	<title>dis-moi où tu me plaîs</title>
 	
 	<script src="lib/jquery.js"></script>
 	<script src="lib/d3.v2.min.js"></script>
@@ -41,7 +41,8 @@
 <! ------------------------------------------------------------ -->
 <div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
-		<h1>dis moi où tu me plaîs</h1>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h1>dis-moi où tu me plaîs</h1>
 		<p><i>exploration des annonces du site <a href="http://croisedanslemetro.com" target="_blank">croisedanslemetro.com</a></i></p>
 	</div>
 	<div class="modal-body"><img src='img/dismoi.jpg'/></div>
@@ -82,9 +83,7 @@
 	$(document).ready(function(){
 	
 		$('#helpModal').modal();
-		$('#helpModal .modal-body img').on("click",function(){
-			$('#helpModal').modal('hide');
-		});
+		$('#helpModal').on("click",function(){ $('#helpModal').modal('hide'); });
 		
 		init_map("cdlm_map");
 		init_graph("cdlm_graph");

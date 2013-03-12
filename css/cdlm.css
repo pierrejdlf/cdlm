@@ -127,7 +127,6 @@ body, html {
 	display:inline-block;
 }
 
-
 /* ------------------------------------------------------------------------ */
 /* PANEL STATION */
 #panel_stationname {
@@ -145,6 +144,7 @@ body, html {
 	width:25px;
 	height:25px;
 	margin-right:10px;
+	cursor:pointer;
 }
 #panel_stationname img:hover {
 	opacity:0.5;
@@ -196,16 +196,10 @@ body, html {
 	cursor: pointer;
 }
 
-
 /* ------------------------------------------------------------------------ */
 /* STATIONS POINTS & VORONOI PATHS */
-.stations {
-
-}
-
-.voropaths {
-
-}
+.stations {}
+.voropaths {}
 .voropaths:hover {
 	stroke-opacity:1;
 	stroke:#C44040;
@@ -230,14 +224,16 @@ body, html {
 
 /* ------------------------------------------------------------------------ */
 /* MODAL WELCOME & HELP */
-#helpModal {
-	
+#helpModal button {
+	background:none;
+	border:none;
 }
 .modal-header {
 	background: #001140;
 	text-align: center;
 	/*font-family: 'Cantora One', sans-serif;*/
 	font-family: 'Clicker Script', cursive;
+	font-weight: normal;
 	color:white;
 }
 .modal-header h1 {
@@ -254,8 +250,4 @@ body, html {
 .modal-footer {
 	text-align: center;
 }
-
-
-
-
 
