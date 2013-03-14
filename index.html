@@ -52,7 +52,7 @@
 </div>
 <! ------------------------------------------------------------ -->
 <div id="panel_graph">
-	<ul class="nav nav-pills nav-stacked" title="afficher ou masquer une catégorie de mots" data-placement="bottom"></ul>
+<ul class="nav nav-pills nav-stacked" title="afficher ou masquer une catégorie de mots" data-placement="bottom"></ul>
 </div>
 <! ------------------------------------------------------------ -->
 <div id="panel_map">
@@ -72,7 +72,7 @@
 	<div id="panel_stationname"><img src="img/metro.png" title="modifie l'affichage des stations. les couleurs correspondent aux lignes, la taille à la fréquentation annuelle." data-placement="bottom"/><div>Sélectionner une station</div></div>
 	<div id="panel_words_outter">
 		<div id="panel_words_overlay"></div>
-		<div id="panel_words" title="TAILLE DES STATIONS = présence cumulée du/des mot(s) sélectionné(s)" data-placement="right">	</div>
+		<div id="panel_words" title="TAILLE DES STATIONS = présence cumulée du/des mot(s) sélectionné(s)" data-placement="right"></div>
 	</div>
 </div>
 <! ------------------------------------------------------------ -->
@@ -88,22 +88,19 @@
 		init_map("cdlm_map");
 		init_graph("cdlm_graph");
 		
-		// adjust height of left panels
-		var hh = $(document).height() - $('#topbar').height() ;
-		$('#panel_map').css("height",hh+'px');
-		$('#panel_graph').css("height",hh+'px');
-		
-		$("#topbar_modes #m_graph").on("click", function(u) {
-			d3.select("#cdlm_map").transition().style("opacity",0).style("pointer-events","none");
-			d3.select("#panel_map").transition().style("opacity",0).style("pointer-events","none");
-			d3.select("#cdlm_graph").transition().style("opacity",1);
-			d3.select("#panel_graph").transition().style("opacity",1);			
+		$("#topbar_modes #m_graph").on("click", function(u) { 	// TO GRAPH
+			d3.select("#cdlm_map").style("display","none");
+			d3.select("#panel_map").style("pointer-events","none").style("opacity",0);
+			
+			d3.select("#cdlm_graph").style("opacity",1);
+			d3.select("#panel_graph").style("opacity",1);			
 		});
-		$("#topbar_modes #m_map").on("click", function(u) {
-			d3.select("#cdlm_graph").transition().style("opacity",0);
-			d3.select("#panel_graph").transition().style("opacity",0);
-			d3.select("#cdlm_map").transition().style("opacity",1).style("pointer-events","");
-			d3.select("#panel_map").transition().style("opacity",1).style("pointer-events","");
+		$("#topbar_modes #m_map").on("click", function(u) {		// TO MAP
+			d3.select("#cdlm_graph").style("opacity",0);
+			d3.select("#panel_graph").style("opacity",0);
+			
+			d3.select("#cdlm_map").style("display","");
+			d3.select("#panel_map").style("pointer-events","all").style("opacity",1);
 		});
 
 		$('.btn-group > .btn, .btn[data-toggle="button"]').click(function() {
@@ -127,6 +124,5 @@
 
 	});	
 </script>
-
 </body>
 </html>
