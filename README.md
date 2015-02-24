@@ -13,7 +13,11 @@ is an interactive exploratory map of the http://croisedanslemetro.com website
 * text analysis using Tropes
 * graph spatialized using Gephi
 
-### Thanks to
+### Many thanks to
+
+* Zona30, Lima
+* [Escuelab](http://escuelab.org/), Lima
+
 
 * http://croisedanslemetro.com
 * scrapy python framework
