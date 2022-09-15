@@ -1,5 +1,5 @@
 ## Dis-moi où tu me plaîs
-http://pierrejdlf.github.com/cdlm/
+http://jdlf.info/cdlm/
 
 is an interactive exploratory map of the http://croisedanslemetro.com website
 
